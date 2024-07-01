@@ -1,1 +1,1 @@
-from .cryptocompare import Cryptocompare
+from .cryptocompare_provider import CryptocompareProvider

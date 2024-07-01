@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 from ..config import CRYPTOCOMPARE
 
-class Cryptocompare():
+class CryptocompareProvider():
     def __init__(self):
         self.url = CRYPTOCOMPARE["URL"]
         self.key = CRYPTOCOMPARE["KEY"]
