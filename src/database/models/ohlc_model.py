@@ -1,7 +1,7 @@
 from peewee import *
 from .base_model import BaseModel
 
-class Ohlc(BaseModel):
+class OhlcModel(BaseModel):
     timestamp = IntegerField()
     datetime = DateTimeField()
     high = FloatField()

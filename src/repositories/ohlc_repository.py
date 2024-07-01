@@ -1,10 +1,10 @@
 from datetime import datetime
-from ..database import Ohlc
+from ..database import OhlcModel
 from .base_repository import BaseRepository
 
 class OhlcRepository(BaseRepository):
     def __init__(self):
-        super().__init__(Ohlc)
+        super().__init__(OhlcModel)
 
     def get_last_delta(self, symbol: str):
         return self.model.select().where(self.model.symbol == symbol).order_by(self.model.datetime.desc()).dicts().first()

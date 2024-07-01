@@ -1,5 +1,5 @@
 from .instance import db
-from .models.ohlc import Ohlc
+from .models.ohlc_model import OhlcModel
 
 db.connect()
-db.create_tables([Ohlc], safe=True)
+db.create_tables([OhlcModel], safe=True)
