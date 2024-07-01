@@ -19,7 +19,7 @@ class BaseRepository(ABC):
         return len(self.get_all(filter))
     
     def insert(self, ohlc_raw: dict):
-        return self.model.insert(ohlc_raw).execute()
+        return self.model.create(ohlc_raw)
     
     def insert_many(self, ohlc_raw: list[dict]):
         self.model.insert_many(ohlc_raw).execute()
