@@ -18,19 +18,19 @@ class BaseRepository(ABC):
     def count(self, filter: dict = {}):
         return len(self.get_all(filter))
     
-    def insert(self, ohlc_raw: dict):
-        return self.model.create(ohlc_raw)
+    def insert(self, data: dict):
+        return self.model.create(data)
     
-    def insert_many(self, ohlc_raw: list[dict]):
-        self.model.insert_many(ohlc_raw).execute()
+    def insert_many(self, data: list[dict]):
+        self.model.insert_many(data).execute()
 
-    def update(self, id: str, ohlc_raw: dict):
-        self.model.update(ohlc_raw).where(self.model.id == id).execute()
+    def update(self, id: str, data: dict):
+        self.model.update(data).where(self.model.id == id).execute()
     
-    def upsert_many(self, ohlc_raw: list[dict], conflict_target: list[str]):
-        self.model.insert_many(ohlc_raw).on_conflict(
+    def upsert_many(self, data: list[dict], conflict_target: list[str]):
+        self.model.insert_many(data).on_conflict(
             conflict_target=[getattr(self.model, key) for key in conflict_target],
-            update={key: getattr(self.model, key) for key in ohlc_raw[0].keys()}
+            update={key: getattr(self.model, key) for key in data[0].keys()}
         ).execute()
 
     def delete_where(self, filters: dict):
