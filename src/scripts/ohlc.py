@@ -1,4 +1,4 @@
-from ..services import log
+from ..shared import log
 from ..repositories import OhlcRepository
 from ..providers import CryptocompareProvider
 from ..utils.date_utils import days_till_today
