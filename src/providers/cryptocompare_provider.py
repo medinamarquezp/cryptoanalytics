@@ -13,19 +13,21 @@ class CryptocompareProvider():
         data = self.__get_data(path)
         return self.__parse_ohlc(fsym, data)
 
-    def get_ohlc_limit(self, fsym: str, tsym = 'usd', limit = 10):
+    def get_ohlc_limited(self, fsym: str, tsym = 'usd', limit = 10):
         path = f"{self.url}/v2/histoday?fsym={fsym.upper()}&tsym={tsym.upper()}&limit={limit}"
         data = self.__get_data(path)
-        ohlc_list = self.__parse_ohlc(fsym, data)
-        return ohlc_list[len(ohlc_list) - 1] if limit == 1 else ohlc_list
+        ohlc_list = self.__parse_ohlc(fsym, data, remove_first=True)
+        return ohlc_list
     
-    def __parse_ohlc(self, fsym: str, data: dict):
+    def __parse_ohlc(self, fsym: str, data: dict, remove_first = False):
         df = pd.DataFrame(data, columns=self.columns)
         df.rename(columns={"time": "timestamp"}, inplace=True)
         df["symbol"] = fsym
         df["provider"] = "cryptocompare"
         df["datetime"] = pd.to_datetime(df["timestamp"], unit="s")
         df["datetime"] = df["datetime"].dt.strftime('%Y-%m-%d %H:%M:%S')
+        if remove_first:
+            df = df.iloc[1:]
         return df.to_dict(orient="records")
     
     def __get_data(self, path: str):
