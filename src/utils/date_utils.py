@@ -12,3 +12,7 @@ def is_today_timestamp(timestamp: int) -> bool:
     today = datetime.today()
     date = date_from_timestamp(timestamp)
     return today.date() == date.date()
+
+def days_till_today(date: datetime) -> int:
+    today = datetime.today()
+    return (today - date).days

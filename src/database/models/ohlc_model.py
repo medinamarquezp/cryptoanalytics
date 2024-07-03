@@ -15,3 +15,6 @@ class OhlcModel(BaseModel):
 
     class Meta:
         db_table = 'ohlc'
+        indexes = (
+            (('symbol', 'timestamp'), True),
+        )
