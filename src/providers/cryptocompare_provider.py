@@ -1,8 +1,9 @@
 import requests
 import pandas as pd
 from ..config import CRYPTOCOMPARE
+from . import OhlcProviderInterface
 
-class CryptocompareProvider():
+class CryptocompareProvider(OhlcProviderInterface):
     def __init__(self):
         self.url = CRYPTOCOMPARE["URL"]
         self.key = CRYPTOCOMPARE["KEY"]
