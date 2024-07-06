@@ -1,7 +1,7 @@
 from ..shared import log
 from ..repositories import OhlcSQLRepository
 from ..providers import CryptocompareProvider
-from ..utils.date_utils import days_till_today
+from ..shared import days_till_today
 
 def import_all(symbol: str):
     try:
