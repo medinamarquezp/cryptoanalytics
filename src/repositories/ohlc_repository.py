@@ -11,8 +11,12 @@ class OhlcRepository(BaseRepository):
     
     def is_updated(self, symbol: str):
         last_delta = self.get_last_delta(symbol=symbol)
+        if last_delta is None:
+            return False
         return last_delta["datetime"].date() == datetime.now().date()
     
     def is_new_delta(self, symbol: str, delta_datetime: str):
         last_delta = self.get_last_delta(symbol=symbol)
+        if last_delta is None:
+            return True
         return last_delta["datetime"].date() < datetime.strptime(delta_datetime, "%Y-%m-%d %H:%M:%S").date()
