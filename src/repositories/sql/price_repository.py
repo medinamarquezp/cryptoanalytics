@@ -1,7 +1,6 @@
-from database import PriceModel
-from .. import BaseRepositoryInterface
+from src.database import PriceModel
 from .base_repository import BaseSQLRepository
 
-class PriceSQLRepository(BaseRepositoryInterface, BaseSQLRepository):
+class PriceSQLRepository(BaseSQLRepository):
     def __init__(self):
         super().__init__(PriceModel)
