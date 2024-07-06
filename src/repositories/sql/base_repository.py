@@ -1,7 +1,7 @@
-from abc import ABC
 from functools import reduce
+from .. import BaseRepositoryInterface
 
-class BaseRepository(ABC):
+class BaseSQLRepository(BaseRepositoryInterface):
     def __init__(self, model):
         self.model = model
 

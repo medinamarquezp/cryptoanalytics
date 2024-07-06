@@ -1,8 +1,9 @@
 from datetime import datetime
-from ..database import OhlcModel
-from .base_repository import BaseRepository
+from src.database import OhlcModel
+from .. import OhlcRepositoryInterface
+from .base_repository import BaseSQLRepository
 
-class OhlcRepository(BaseRepository):
+class OhlcSQLRepository(OhlcRepositoryInterface, BaseSQLRepository):
     def __init__(self):
         super().__init__(OhlcModel)
 
