@@ -3,6 +3,10 @@ from .. import BaseRepositoryInterface
 
 class OhlcRepositoryInterface(BaseRepositoryInterface):
     @abstractmethod
+    def is_empty(self, symbol: str) -> bool:
+        pass
+
+    @abstractmethod
     def get_last_delta(self, symbol: str) -> dict:
         pass
     

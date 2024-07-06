@@ -7,6 +7,9 @@ class OhlcSQLRepository(OhlcRepositoryInterface, BaseSQLRepository):
     def __init__(self):
         super().__init__(OhlcModel)
 
+    def is_empty(self, symbol: str):
+        return self.count(filter={"symbol": symbol}) == 0
+
     def get_last_delta(self, symbol: str):
         return self.model.select().where(self.model.symbol == symbol).order_by(self.model.datetime.desc()).dicts().first()
     
