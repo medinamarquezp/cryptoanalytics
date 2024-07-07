@@ -1,4 +1,5 @@
 from .interfaces.base_repository_interface import BaseRepositoryInterface
 from .interfaces.ohlc_repository_interface import OhlcRepositoryInterface
+from .interfaces.prices_repository_interface import PricesRepositoryInterface
 from .sql.ohlc_repository import OhlcSQLRepository
 from .sql.prices_repository import PricesSQLRepository
