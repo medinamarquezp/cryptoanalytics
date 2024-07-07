@@ -17,3 +17,7 @@ class OhlcRepositoryInterface(BaseRepositoryInterface):
     @abstractmethod
     def is_new_delta(self, symbol: str, delta_datetime: str) -> bool:
         pass
+
+    @abstractmethod
+    def get_deltas_from(self, symbol: str, date_from: str) -> list[dict]:
+        pass
