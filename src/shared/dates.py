@@ -1,5 +1,8 @@
 from datetime import datetime
 
+def date_from_string(date: str) -> datetime:
+    return datetime.strptime(date, "%Y-%m-%d")
+
 def date_from_timestamp(timestamp: int) -> datetime:
     return datetime.fromtimestamp(timestamp)
 
