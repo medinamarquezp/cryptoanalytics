@@ -3,14 +3,19 @@ from ..providers import OhlcProviderInterface
 from ..repositories import OhlcRepositoryInterface
 
 class OhlcService:
+    __default_symbol = "BTC"
+
     def __init__(
             self, 
             repository: OhlcRepositoryInterface, 
-            provider: OhlcProviderInterface, 
-            symbol: str
+            provider: OhlcProviderInterface,
+            symbol: str = __default_symbol
         ):
         self.repository = repository
         self.provider = provider
+        self.symbol = symbol
+
+    def set_symbol(self, symbol: str):
         self.symbol = symbol
 
     def get_all(self):
